@@ -1,0 +1,8 @@
+linters:
+  enable:
+    - gosec
+    - err113
+    - mnd
+    - loggercheck
+    - staticcheck
+    - govet
