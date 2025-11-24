@@ -1,0 +1,504 @@
+definitions:
+  entities.ReturnObject:
+    properties:
+      data: {}
+      errors: {}
+      message:
+        type: string
+      meta: {}
+      status:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /block:
+    get:
+      parameters:
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - default: asc
+        description: default asc
+        enum:
+        - asc
+        - desc
+        in: query
+        name: sort
+        type: string
+      - description: Order By
+        in: query
+        name: order_by
+        type: string
+      - description: keyword nama
+        in: query
+        name: filter[name]
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Get all data
+      tags:
+      - Block
+    post:
+      parameters:
+      - in: formData
+        name: code
+        required: true
+        type: string
+      - in: formData
+        name: name
+        required: true
+        type: string
+      - in: formData
+        name: row
+        required: true
+        type: integer
+      - in: formData
+        name: slot
+        required: true
+        type: integer
+      - in: formData
+        name: tier
+        required: true
+        type: integer
+      - in: formData
+        name: yard
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Create data
+      tags:
+      - Block
+  /block/{id}:
+    get:
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Get spesifik data
+      tags:
+      - Block
+    put:
+      parameters:
+      - in: formData
+        name: code
+        required: true
+        type: string
+      - in: formData
+        name: name
+        required: true
+        type: string
+      - in: formData
+        name: row
+        required: true
+        type: integer
+      - in: formData
+        name: slot
+        required: true
+        type: integer
+      - in: formData
+        name: tier
+        required: true
+        type: integer
+      - in: formData
+        name: yard
+        required: true
+        type: integer
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Update data
+      tags:
+      - Block
+  /pickup:
+    post:
+      parameters:
+      - in: formData
+        name: container_height
+        required: true
+        type: number
+      - in: formData
+        name: container_number
+        required: true
+        type: string
+      - in: formData
+        name: container_size
+        required: true
+        type: integer
+      - in: formData
+        name: container_type
+        required: true
+        type: string
+      - in: formData
+        name: yard
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Suggest Placement
+      tags:
+      - Stacking
+  /placement:
+    post:
+      parameters:
+      - in: formData
+        name: container_height
+        required: true
+        type: number
+      - in: formData
+        name: container_number
+        required: true
+        type: string
+      - in: formData
+        name: container_size
+        required: true
+        type: integer
+      - in: formData
+        name: container_type
+        required: true
+        type: string
+      - in: formData
+        name: yard
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Suggest Placement
+      tags:
+      - Stacking
+  /suggestion:
+    post:
+      parameters:
+      - in: formData
+        name: container_height
+        required: true
+        type: number
+      - in: formData
+        name: container_number
+        required: true
+        type: string
+      - in: formData
+        name: container_size
+        required: true
+        type: integer
+      - in: formData
+        name: container_type
+        required: true
+        type: string
+      - in: formData
+        name: yard
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Suggest Placement
+      tags:
+      - Stacking
+  /yard:
+    get:
+      parameters:
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - default: asc
+        description: default asc
+        enum:
+        - asc
+        - desc
+        in: query
+        name: sort
+        type: string
+      - description: Order By
+        in: query
+        name: order_by
+        type: string
+      - description: keyword nama
+        in: query
+        name: filter[name]
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Get all data
+      tags:
+      - Yard
+    post:
+      parameters:
+      - in: formData
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Create data
+      tags:
+      - Yard
+  /yard/{id}:
+    get:
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Get spesifik data
+      tags:
+      - Yard
+    put:
+      parameters:
+      - in: formData
+        name: name
+        required: true
+        type: string
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Update data
+      tags:
+      - Yard
+  /yardPlan:
+    get:
+      parameters:
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - default: asc
+        description: default asc
+        enum:
+        - asc
+        - desc
+        in: query
+        name: sort
+        type: string
+      - description: Order By
+        in: query
+        name: order_by
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Get all data
+      tags:
+      - Yard Plan
+    post:
+      parameters:
+      - in: formData
+        name: block
+        required: true
+        type: integer
+      - in: formData
+        name: container_height
+        required: true
+        type: number
+      - enum:
+        - 20
+        - 40
+        in: formData
+        name: container_size
+        required: true
+        type: integer
+      - in: formData
+        name: container_type
+        required: true
+        type: string
+      - in: formData
+        name: row_from
+        required: true
+        type: integer
+      - in: formData
+        name: row_to
+        required: true
+        type: integer
+      - in: formData
+        name: slot_from
+        required: true
+        type: integer
+      - in: formData
+        name: slot_to
+        required: true
+        type: integer
+      - in: formData
+        name: tier_from
+        required: true
+        type: integer
+      - in: formData
+        name: tier_to
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Create data
+      tags:
+      - Yard Plan
+  /yardPlan/{id}:
+    get:
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Get spesifik data
+      tags:
+      - Yard Plan
+    put:
+      parameters:
+      - in: formData
+        name: block
+        required: true
+        type: integer
+      - in: formData
+        name: container_height
+        required: true
+        type: number
+      - enum:
+        - 20
+        - 40
+        in: formData
+        name: container_size
+        required: true
+        type: integer
+      - in: formData
+        name: container_type
+        required: true
+        type: string
+      - in: formData
+        name: row_from
+        required: true
+        type: integer
+      - in: formData
+        name: row_to
+        required: true
+        type: integer
+      - in: formData
+        name: slot_from
+        required: true
+        type: integer
+      - in: formData
+        name: slot_to
+        required: true
+        type: integer
+      - in: formData
+        name: tier_from
+        required: true
+        type: integer
+      - in: formData
+        name: tier_to
+        required: true
+        type: integer
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entities.ReturnObject'
+      summary: Update data
+      tags:
+      - Yard Plan
+swagger: "2.0"

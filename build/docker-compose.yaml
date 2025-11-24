@@ -1,0 +1,22 @@
+services:
+
+  db:
+    image: postgres:17.4
+    restart: always
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    container_name: postgre
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: coder_report   #ganti dengan nama DB mu
+      POSTGRES_USER: yustinus     #ganti dengan username DB mu
+      POSTGRES_PASSWORD: superman #ganti dengan passwod DB mu
+      #DB_HOST: docker.for.mac.host.internal
+
+    volumes:
+      - postgre-data:/var/lib/postgresql/data #definisikan volume docker
+
+volumes:
+  postgre-data: 
+    external: true
